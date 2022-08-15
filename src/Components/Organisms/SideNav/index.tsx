@@ -2,7 +2,7 @@ import React from "react";
 // Node Modules
 
 // Custom Components
-import { Logo } from "Components/Atoms/Logo";
+import { Logo, LogoIcon } from "Components/Atoms/Logo";
 import {
   Analytics,
   Balance,
@@ -95,11 +95,16 @@ const navThree = [
 interface SideNavProps {}
 const SideNav: React.FC<SideNavProps> = () => {
   // Store
-  const { mobileNavOpen } = appStore();
+  const { mobileNavOpen, setPanelHide, panelHide } = appStore();
   // Data to render
   return (
     <Wrapper mobile={mobileNavOpen}>
-      <Logo className="mb-50 logo" />
+      {panelHide ? (
+        <LogoIcon className="mb-50 logo" />
+      ) : (
+        <Logo className="mb-50 logo" />
+      )}
+
       <div className="links">
         {navOne.map((nav) => (
           <SideNavGroup key={nav.title} title={nav.title} links={nav.links} />
@@ -116,6 +121,7 @@ const SideNav: React.FC<SideNavProps> = () => {
           icon={<LeftCaret />}
           label="Hide panel"
           className="btn-primary btn-md"
+          onClick={() => setPanelHide()}
         />
       </div>
     </Wrapper>

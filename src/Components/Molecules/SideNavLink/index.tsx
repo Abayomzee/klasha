@@ -14,7 +14,7 @@ const SideNavLink: React.FC<SideNavLinkProps> = (props) => {
   // props
   const { icon, label, to, className } = props;
   // Store
-  const { setActiveSideNav, activeSideNav } = appStore();
+  const { setActiveSideNav, activeSideNav, panelHide } = appStore();
   return (
     <Link to={to ? to : "#"} className="text-decoration-none">
       <LinkElement
@@ -22,7 +22,9 @@ const SideNavLink: React.FC<SideNavLinkProps> = (props) => {
         onClick={() => setActiveSideNav(label)}
       >
         {icon}
-        <Typography as="span" className="paragraph-1" text={label} />
+        {!panelHide && (
+          <Typography as="span" className="paragraph-1" text={label} />
+        )}
       </LinkElement>
     </Link>
   );
