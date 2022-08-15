@@ -17,7 +17,7 @@ const IconButton: React.FC<ButtonProps> = (props) => {
     <Button
       className={`btn-icon ${iconPosition === "right" ? "reverse" : ""} ${
         className ? className : ""
-      }`}
+      } ${hideLabel ? "rotate-180" : ""}`}
       onClick={onClick}
       title={title}
       iconPosition={iconPosition}
