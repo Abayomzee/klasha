@@ -98,7 +98,7 @@ const SideNav: React.FC<SideNavProps> = () => {
   const { mobileNavOpen, setPanelHide, panelHide } = appStore();
   // Data to render
   return (
-    <Wrapper mobile={mobileNavOpen}>
+    <Wrapper mobile={mobileNavOpen} iconMode={panelHide}>
       {panelHide ? (
         <LogoIcon className="mb-50 logo" />
       ) : (
@@ -122,6 +122,7 @@ const SideNav: React.FC<SideNavProps> = () => {
           label="Hide panel"
           className="btn-primary btn-md"
           onClick={() => setPanelHide()}
+          hideLabel={panelHide}
         />
       </div>
     </Wrapper>

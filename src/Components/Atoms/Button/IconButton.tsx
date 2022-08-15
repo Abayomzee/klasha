@@ -8,9 +8,11 @@ interface ButtonProps {
   iconPosition?: "left" | "right";
   label?: string;
   onClick?: (val?: any) => void;
+  hideLabel?: boolean;
 }
 const IconButton: React.FC<ButtonProps> = (props) => {
-  const { className, title, icon, onClick, label, iconPosition } = props;
+  const { className, title, icon, onClick, label, iconPosition, hideLabel } =
+    props;
   return (
     <Button
       className={`btn-icon ${iconPosition === "right" ? "reverse" : ""} ${
@@ -21,7 +23,7 @@ const IconButton: React.FC<ButtonProps> = (props) => {
       iconPosition={iconPosition}
     >
       {icon}
-      {label}
+      {!hideLabel && label}
     </Button>
   );
 };
